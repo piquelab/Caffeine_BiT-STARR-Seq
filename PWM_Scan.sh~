@@ -1,0 +1,7 @@
+#!/bin/bash
+module load ucscbrowser/2019-05-25
+set -v
+ID=$1
+cd JASPAR_PWMs/new/
+scanPwm ${ID}* bit_fasta.fa -t=10 | awk -v var=${ID} -v OFS='\t' '{print $1,$2,$3,var,$4,$5}' > /wsu/home/groups/piquelab/Carly/Cindy_HUVEC_Analysis/PWM_res_global/bit_caf_huvec_t10_${ID}.txt
+wc -l /wsu/home/groups/piquelab/Carly/Cindy_HUVEC_Analysis/PWM_res_global/bit_caf_huvec_t10_${ID}.txt >> number_results_per_motif.txt 
