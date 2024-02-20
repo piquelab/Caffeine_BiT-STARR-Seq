@@ -26,7 +26,7 @@ write.table(iij,file="/wsu/home/groups/piquelab/Carly/Cindy_HUVEC_Analysis/updat
 siij<-subset(iij,iij$case_padj<0.1)
 # length(unique(siij$ID))
 #[1] 0
-siij<-subset(iij,iij$case_p<0.01)
+siij<-subset(iij,iij$case_p<0.0215)
 # length(unique(siij$ID))
 #[1] 8
 # length(unique(siij$identifier))
@@ -58,7 +58,3 @@ unique(tr$trait) #Sanity check... make sure no "ns"
 #[1] 1
 #sum(tr$trait=="HTN")
 #[1] 7
-#Now try multiple test correction within df? Updated 11/6/23 CB
-df<-iij[!duplicated(iij$identifier), ]
-df$new_padj<-p.adjust(df$case_p,method="BH")
-subset(df,df$new_padj<0.1) #This is still the only significant variant: chr19_17057208/rs9676373_fw

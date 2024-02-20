@@ -29,32 +29,13 @@ fisher.test(mat)
 #odds ratio
 # 0.9410734
 
-#cASE
-se<-subset(ijc,ijc$case_padj<0.1)
-length(unique(ijc$identifier)) #7227
-length(unique(se$identifier)) #10
-noc<-subset(case,!(case$identifier %in% ijc$identifier))
-length(unique(noc$identifier)) #16568
-snoc<-subset(noc,noc$case_padj<0.1)
-length(unique(snoc$identifier)) #19
-mat<-matrix(c(10,19,7217,16549),nrow=2)
-#sanity check..
-length(unique(case$identifier)) #23795
-sum(mat) #23795
-fisher.test(mat)
-#p-value = 0.6866
-#95 percent confidence interval:
-# 0.5009984 2.7295368
-#odds ratio
-#  1.206834
-
-#cASE p<0.01
-se<-subset(ijc,ijc$case_p<0.01)
+#cASE p<0.0215
+se<-subset(ijc,ijc$case_p<0.0215)
 length(unique(ijc$identifier)) #7227
 length(unique(se$identifier)) #187
 noc<-subset(case,!(case$identifier %in% ijc$identifier))
 length(unique(noc$identifier)) #16568
-snoc<-subset(noc,noc$case_p<0.01)
+snoc<-subset(noc,noc$case_p<0.0215)
 length(unique(snoc$identifier)) #382
 mat<-matrix(c(187,382,7040,16186),nrow=2)
 #sanity check..
@@ -107,33 +88,14 @@ fisher.test(mat)
 #odds ratio
 #  1.380162
 
-#cASE
-se<-subset(ijc,ijc$case_padj<0.1)
-length(unique(ijc$identifier)) #7
-length(unique(se$identifier)) #1976
-noc<-subset(case,!(case$identifier %in% ijc$identifier))
-length(unique(noc$identifier)) #6046
-snoc<-subset(noc,noc$case_padj<0.1)
-length(unique(snoc$identifier)) #7
-mat<-matrix(c(7,7,1969,6039),nrow=2)
-#sanity check..
-length(unique(case$identifier)) #8022
-sum(mat)
-fisher.test(mat)
-#p-value = 0.05435
-#95 percent confidence interval:
- # 0.9166246 10.2595252
-#odds ratio
- # 3.066399
 
-
-#cASE p<0.01
-se<-subset(ijc,ijc$case_p<0.01)
+#cASE p<0.0215
+se<-subset(ijc,ijc$case_p<0.0215)
 length(unique(ijc$identifier)) #1976
 length(unique(se$identifier)) #59
 noc<-subset(case,!(case$identifier %in% ijc$identifier))
 length(unique(noc$identifier)) #6046
-snoc<-subset(noc,noc$case_p<0.01)
+snoc<-subset(noc,noc$case_p<0.0215)
 length(unique(snoc$identifier)) #152
 mat<-matrix(c(59,152,1917,5894),nrow=2)
 #sanity check..

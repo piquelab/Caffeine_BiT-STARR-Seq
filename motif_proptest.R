@@ -47,16 +47,16 @@ det$tf<-NULL
 td<-inner_join(det,nam,by=c("motif"="V1"))
 write.table(td,"/wsu/home/groups/piquelab/Carly/Cindy_HUVEC_Analysis/updated_2303/new_meta/ASE_proptest_filt100.txt")
 
-#Now cASE (new threshold, p<0.01), then plot
+#Now cASE (new threshold, p<0.0215), then plot
 detf<-inner_join(case,pwm,by=c("rsID"="V4"))
 # filter for motifs < 100 constructs in lib
 te<-as.data.frame(table(pwm$V5))
 tkeep<-subset(te,te$Freq>99) #Make list of motifs that have 100+ instances in lib
 ndetf<- subset(detf,detf$V5 %in% tkeep$Var1)
-np<-nrow(subset(ndetf,ndetf$case_p<0.01))/nrow(ndetf)
+np<-nrow(subset(ndetf,ndetf$case_p<0.0215))/nrow(ndetf)
 #np=0.02799144
 
-stf<-as.data.frame(table(subset(ndetf,ndetf$case_p<0.01)$V5))
+stf<-as.data.frame(table(subset(ndetf,ndetf$case_p<0.0215)$V5))
 colnames(stf)<-c("Var1","sig_Freq")
 totalde<-as.data.frame(table(detf$V5))
 totalde$exp<-np

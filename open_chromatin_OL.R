@@ -41,30 +41,13 @@ fisher.test(mat)
 
 
 
-length(unique(casec$identifier)) #8030
-length(unique(scasec$identifier)) #14
-noc<-subset(wc,!(wc$identifier %in% casec$identifier))
-length(unique(noc$identifier)) #15784
-snoc<-subset(noc,noc$case_padj<0.1)
-length(unique(snoc$identifier)) #15
-mat<-matrix(c(14,15,8016,15769),nrow=2)
-#sanity check..
-length(unique(wc$identifier)) #23814
-sum(mat) #23814
-fisher.test(mat)
-#p-value = 0.1154
-#95 percent confidence interval:
-# 0.820647 4.081762
-#odds ratio
- # 1.836077
-
 ##Now try new p value threshold:
-scasec<-subset(casec,casec$case_p<0.01)
+scasec<-subset(casec,casec$case_p<0.0215)
 length(unique(casec$identifier)) #8030
 length(unique(scasec$identifier)) #211
 noc<-subset(wc,!(wc$identifier %in% casec$identifier))
-length(unique(noc$identifier)) #15784
-snoc<-subset(noc,noc$case_p<0.01)
+length(unique(noc$identifier)) #15784 
+snoc<-subset(noc,noc$case_p<0.0215)
 length(unique(snoc$identifier)) #358
 mat<-matrix(c(211,358,7819,15426),nrow=2)
 #sanity check..
